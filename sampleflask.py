@@ -19,7 +19,8 @@ def about():
 	<a href='%s'>About</a><br>
 	<a href='%s'>Contact</a><br><br><br>
 	Just a simple project created for the sake of the prize!
-	""" % (flask.url_for("index"), flask.url_for("about"), flask.url_for("contact")
+	""" % (flask.url_for("index"), flask.url_for("about"), flask.url_for("contact"))
+	return html
 	
 @app.route("/contact")
 def contact():
@@ -30,8 +31,10 @@ def contact():
 	Name : Christian Edensor Arbon<br>
 	Email: cearbon@netsuite.com<br>
 	Message: Ping me if you need help with regards to NetSuite<br>
-	""" % (flask.url_for("index"), flask.url_for("about"), flask.url_for("contact")
+	""" % (flask.url_for("index"), flask.url_for("about"), flask.url_for("contact"))
+	return html
 
 	
 if __name__=="__main__":
 	app.debug = True
+	app.run(port=8888)
