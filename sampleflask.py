@@ -3,6 +3,8 @@ import flask
 app = flask.Flask(__name__)
 
 #route, if asking for the route, return the function
+messagez = ""
+
 @app.route("/")
 def index():
 	html = """
@@ -15,6 +17,8 @@ def index():
 
 @app.route("/about")
 def about():
+	global messagez
+	print messagez
 	html= """<a href='%s'>Home</a><br>
 	<a href='%s'>About</a><br>
 	<a href='%s'>Contact</a><br><br><br>
@@ -35,10 +39,27 @@ def contact():
 	name = flask.request.form.get('name')
 	message = flask.request.form.get('message')
 	email = flask.request.form.get('email')
+	if name is not None and message is not None and email is not None:
+		global messagez
+		print messagez
+		messagex = messagez
+		messagey = str(messagex) 
+		namex = str(name)
+		messagea = str(message)
+		messagey = messagey + "<br>- " + namex + " : " + messagea
+		messagez = messagey
 	return flask.render_template('hello.html', name=name, email=email, message=message)
+
+@app.route("/msg")
+def msg():
+	return messagez
+
 	#return html
 
 	
 if __name__=="__main__":
+	global messagez
+	messagez = "<h1>Messages</h1>"
+	print messagez
 	app.debug = True
 	app.run(port=8888)
