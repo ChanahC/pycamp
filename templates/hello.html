@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<a href="{{url_for('index')}}">Home</a><br>
+	<a href="{{url_for('about')}}">About</a><br>
+	<a href="{{url_for('contact')}}">Contact</a><br>
+<form action="{{url_for('contact')}}" method="POST">
+	
+	Name<input type="text" name="name"><br>
+	Email<input type="email", name="email"><br>
+	Message<input type="text", name="message"><br>
+	<button type="submit">Pasa</button>
+</form>
+{{message}}
+<br>
+- {{name}} ({{email}})
+</body>
+</html>
